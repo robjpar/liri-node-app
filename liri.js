@@ -15,6 +15,10 @@ var outputText = '=========\n';
 
 function executeCommand() {
   if (command === 'concert-this') {
+    if (!term) {
+      term = 'Cher';
+    }
+
     concertThis();
 
   } else if (command === 'spotify-this-song') {
@@ -23,9 +27,17 @@ function executeCommand() {
       process.exit();
     }
 
+    if (!term) {
+      term = 'I Want it That Way';
+    }
+
     spotifyThisSong();
 
   } else if (command === 'movie-this') {
+    if (!term) {
+      term = 'Batman';
+    }
+
     movieThis();
 
   } else if (command === 'do-what-it-says') {
