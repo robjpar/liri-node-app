@@ -147,10 +147,10 @@ function movieThis() {
       });
 
       outputText +=
-        `Country: ${value.Country}\n` +
-        `Language: ${value.Language}\n` +
-        `Plot: ${value.Plot}\n` +
-        `Actors: ${value.Actors}\n` +
+        `Country: ${movie.Country}\n` +
+        `Language: ${movie.Language}\n` +
+        `Plot: ${movie.Plot}\n` +
+        `Actors: ${movie.Actors}\n` +
         '---------\n';
 
       console.log(outputText);
