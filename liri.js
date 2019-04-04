@@ -51,3 +51,42 @@ function executeCommand() {
 
 executeCommand();
 
+function concertThis() {
+  outputText +=
+    `Command: ${command}, term: ${term}\n` +
+    '---------\n';
+
+  var queryUrl = `https://rest.bandsintown.com/artists/${term}/events?app_id=codingbootcamp`;
+
+  axios.get(queryUrl)
+    .then(function(response) {
+
+      response.data.forEach(function(event) {
+        outputText +=
+          `Venue: ${event.venue.name}\n` +
+          `Location: ${event.venue.city}, ${event.venue.region}, ${event.venue.country}\n` +
+          `Date: ${moment(event.datetime).format('MM/DD/YYYY')}\n` +
+          '---------\n';
+
+      });
+
+      console.log(outputText);
+
+      saveToFile();
+    })
+    .catch(function(error) {
+      console.log(`!!! Could not get data, error: ${error}`);
+    });
+}
+
+function saveToFile() {
+  fs.appendFile(LOG_FILENAME, outputText, function(error) {
+
+    if (error) {
+      console.log(`!!! Could not save to ${LOG_FILENAME}, error: ${error}`);
+
+    } else {
+      console.log(`<<< Results also appended to ${LOG_FILENAME} in the current directory`);
+    }
+  });
+}
