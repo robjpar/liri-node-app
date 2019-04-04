@@ -19,7 +19,7 @@ function executeCommand() {
 
   } else if (command === 'spotify-this-song') {
     if (!keys.spotify.id || !keys.spotify.secret) {
-      console.log('!!! Spotify credentials not available');
+      console.log('!!! Spotify credentials not available. Check the ".env" file');
       process.exit();
     }
 
