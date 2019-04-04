@@ -162,6 +162,25 @@ function movieThis() {
     });
 }
 
+function doWhatItSays() {
+  fs.readFile(RANDOM_FILENAME, "utf8", function(error, data) {
+
+    if (error) {
+      console.log(`!!! Could not read ${RANDOM_FILENAME}, error: ${error}`);
+
+    } else {
+      var dataArray = data.split(",").map(function(item) {
+        return item.trim();
+      });
+
+      command = dataArray[0];
+      term = dataArray[1];
+
+      executeCommand();
+    }
+  });
+}
+
 function saveToFile() {
   fs.appendFile(LOG_FILENAME, outputText, function(error) {
 
