@@ -39,11 +39,11 @@ function executeCommand() {
     console.log(
       'Usage:\n' +
       'node liri.js concert-this <artist/band name here>\n' +
-      ' e.g. node liri.js concert-this cher\n' +
+      ' e.g. node liri.js concert-this Cher\n' +
       'node liri.js spotify-this-song <song name here>\n' +
       ' e.g. node liri.js spotify-this-song I Want it That Way\n' +
       'node liri.js movie-this <movie name here>\n' +
-      ' e.g. node liri.js movie-this batman\n' +
+      ' e.g. node liri.js movie-this Batman\n' +
       'node liri.js do-what-it-says'
     );
   }
