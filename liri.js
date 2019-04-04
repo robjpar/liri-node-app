@@ -120,6 +120,48 @@ function spotifyThisSong() {
 
 }
 
+function movieThis() {
+  outputText +=
+    `Command: ${command}, term: ${term}\n` +
+    '---------\n';
+
+  var queryUrl = `http://www.omdbapi.com/?t=${term}&plot=short&apikey=trilogy`;
+
+  axios.get(queryUrl)
+    .then(function(response) {
+      var movie = response.data;
+
+      outputText +=
+        `Title: ${movie.Title}\n` +
+        `Year: ${movie.Year}\n`;
+
+      movie.Ratings.forEach(function(rating) {
+        if (rating.Source === 'Internet Movie Database') {
+          outputText += `IMDB Rating: ${rating.Value}\n`;
+        }
+
+        if (rating.Source === 'Rotten Tomatoes') {
+          outputText += `Rotten Tomatoes Rating: ${rating.Value}\n`;
+        }
+
+      });
+
+      outputText +=
+        `Country: ${value.Country}\n` +
+        `Language: ${value.Language}\n` +
+        `Plot: ${value.Plot}\n` +
+        `Actors: ${value.Actors}\n` +
+        '---------\n';
+
+      console.log(outputText);
+
+      saveToFile();
+    })
+    .catch(function(error) {
+      console.log(`!!! Could not get data, error: ${error}`);
+    });
+}
+
 function saveToFile() {
   fs.appendFile(LOG_FILENAME, outputText, function(error) {
 
