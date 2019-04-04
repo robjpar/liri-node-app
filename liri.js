@@ -79,6 +79,47 @@ function concertThis() {
     });
 }
 
+function spotifyThisSong() {
+  var spotify = new Spotify(keys.spotify);
+
+  spotify
+    .search({
+      type: 'track',
+      query: term,
+      limit: 20 // default value
+    })
+    .then(function(response) {
+      outputText +=
+        `Command: ${command}, term: ${term}\n` +
+        '---------\n';
+
+      response.tracks.items.forEach(function(track) {
+
+        outputText += 'Artist(s): ';
+
+        track.artists.forEach(function(artist) {
+          outputText += `${artist.name}, `;
+        });
+
+        outputText += '\n';
+
+        outputText +=
+          `Song's name: ${track.name}\n` +
+          `Preview link: ${track.preview_url === null ? 'Not available' : track.preview_url}\n` +
+          `Album: ${track.album.name}\n` +
+          '---------\n';
+      });
+
+      console.log(outputText);
+
+      saveToFile();
+    })
+    .catch(function(error) {
+      console.log(`!!! Could not get data, error: ${error}`);
+    });
+
+}
+
 function saveToFile() {
   fs.appendFile(LOG_FILENAME, outputText, function(error) {
 
