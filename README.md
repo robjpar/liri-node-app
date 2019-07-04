@@ -1,6 +1,6 @@
 # L.I.R.I. &mdash; Language Interpretation and Recognition Interface
 
-This is a simple implementation of the Language Interpretation and Recognition Interface (LIRI) as a command line Node.js application. It allows users to search for info about concerts, songs, and movies.
+This is a simple implementation of the Language Interpretation and Recognition Interface (L.I.R.I.) as a command line Node.js application. It allows users to search for info about concerts, songs, and movies.
 
 ## Features
 
